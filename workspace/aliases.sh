@@ -76,6 +76,22 @@ alias pu="phpunit"
 alias puf="phpunit --filter"
 alias pud='phpunit --debug'
 
+#npm aliases
+alias nrd="npm run dev"
+alias nrw="npm run watch"
+alias nrwp="npm run watch-poll"
+alias nrh="npm run hot"
+alias nrs="npm run serve"
+alias nrp="npm run production"
+
+#yarn aliases
+alias yrd="yarn run dev"
+alias yrw="yarn run watch"
+alias yrwp="yarn run watch-poll"
+alias yrh="yarn run hot"
+alias yrs="yarn run serve"
+alias yrp="yarn run production"
+
 alias cc='codecept'
 alias ccb='codecept build'
 alias ccr='codecept run'
@@ -87,6 +103,7 @@ alias npm-global="npm list -g --depth 0"
 alias ra="reload"
 alias reload="source ~/.aliases && echo \"$COL_GREEN ==> Aliases Reloaded... $COL_RESET \n \""
 alias run="npm run"
+alias tree="xtree"
 
 # Xvfb
 alias xvfb="Xvfb -ac :0 -screen 0 1024x768x16 &"
