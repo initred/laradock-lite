@@ -266,19 +266,6 @@ RUN if [ ${INSTALL_GMP} = true ]; then \
   ;fi
 
 ###########################################################################
-# SSH2:
-###########################################################################
-
-USER root
-
-ARG INSTALL_SSH2=false
-
-RUN if [ ${INSTALL_SSH2} = true ]; then \
-  # Install the PHP SSH2 extension
-  apt-get -y install libssh2-1-dev php${LARADOCK_PHP_VERSION}-ssh2 \
-  ;fi
-
-###########################################################################
 # SOAP:
 ###########################################################################
 
@@ -579,24 +566,6 @@ RUN if [ ${INSTALL_INOTIFY} = true ]; then \
   pecl -q install inotify && \
   echo "extension=inotify.so" >> /etc/php/${LARADOCK_PHP_VERSION}/mods-available/inotify.ini && \
   ln -s /etc/php/${LARADOCK_PHP_VERSION}/mods-available/inotify.ini /etc/php/${LARADOCK_PHP_VERSION}/cli/conf.d/20-inotify.ini \
-  ;fi \
-  ;fi
-
-###########################################################################
-# AST EXTENSION
-###########################################################################
-
-ARG INSTALL_AST=false
-ARG AST_VERSION=1.0.3
-ENV AST_VERSION ${AST_VERSION}
-
-RUN if [ ${INSTALL_AST} = true ]; then \
-  # AST extension requires PHP 7.0.0 or newer
-  if [ $(php -r "echo PHP_MAJOR_VERSION;") != "5" ]; then \
-  # Install AST extension
-  printf "\n" | pecl -q install ast-${AST_VERSION} && \
-  echo "extension=ast.so" >> /etc/php/${LARADOCK_PHP_VERSION}/mods-available/ast.ini && \
-  phpenmod -v ${LARADOCK_PHP_VERSION} -s cli ast \
   ;fi \
   ;fi
 
@@ -1084,20 +1053,6 @@ RUN if [ ${INSTALL_SUPERVISOR} = true ]; then \
   sed -i 's/\;\[include\]/\[include\]/g' /etc/supervisord.conf && \
   sed -i 's/\;files\s.*/files = supervisord.d\/*.conf/g' /etc/supervisord.conf \
   ;fi \
-  ;fi
-
-USER laradock
-
-###########################################################################
-# ImageMagick:
-###########################################################################
-
-USER root
-
-ARG INSTALL_IMAGEMAGICK=false
-
-RUN if [ ${INSTALL_IMAGEMAGICK} = true ]; then \
-  apt-get install -y imagemagick php-imagick \
   ;fi
 
 ###########################################################################

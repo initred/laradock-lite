@@ -18,7 +18,7 @@ env:
     - PHP_VERSION=NA BUILD_SERVICE=solr
     - PHP_VERSION=NA BUILD_SERVICE="mssql"
     - PHP_VERSION=NA BUILD_SERVICE="nginx apache2 mysql mariadb postgres postgres-postgis mongo redis cassandra"
-    - PHP_VERSION=NA BUILD_SERVICE="memcached beanstalkd beanstalkd-console elasticsearch certbot mailhog selenium jenkins proxy proxy2 haproxy gearman"
+    - PHP_VERSION=NA BUILD_SERVICE="memcached beanstalkd beanstalkd-console elasticsearch certbot mailhog selenium jenkins gearman"
     - PHP_VERSION=NA BUILD_SERVICE="laravel-echo-server"
     # - PHP_VERSION=NA BUILD_SERVICE="aws"
 

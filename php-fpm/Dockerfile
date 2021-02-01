@@ -97,23 +97,6 @@ RUN if [ ${INSTALL_GMP} = true ]; then \
   ;fi
 
 ###########################################################################
-# SSH2:
-###########################################################################
-
-ARG INSTALL_SSH2=false
-
-RUN if [ ${INSTALL_SSH2} = true ]; then \
-  # Install the ssh2 extension
-  apt-get -y install libssh2-1-dev && \
-  if [ $(php -r "echo PHP_MAJOR_VERSION;") = "5" ]; then \
-  pecl install -a ssh2-0.13; \
-  else \
-  pecl install -a ssh2-1.2; \
-  fi && \
-  docker-php-ext-enable ssh2 \
-  ;fi
-
-###########################################################################
 # libfaketime:
 ###########################################################################
 
@@ -597,20 +580,6 @@ ARG INSTALL_IMAGE_OPTIMIZERS=false
 
 RUN if [ ${INSTALL_IMAGE_OPTIMIZERS} = true ]; then \
   apt-get install -y jpegoptim optipng pngquant gifsicle \
-  ;fi
-
-###########################################################################
-# ImageMagick:
-###########################################################################
-
-USER root
-
-ARG INSTALL_IMAGEMAGICK=false
-
-RUN if [ ${INSTALL_IMAGEMAGICK} = true ]; then \
-  apt-get install -y libmagickwand-dev imagemagick && \
-  pecl install imagick && \
-  docker-php-ext-enable imagick \
   ;fi
 
 ###########################################################################
