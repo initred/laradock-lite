@@ -18,7 +18,8 @@ FROM laradock/workspace:${BASE_IMAGE_TAG_PREFIX}-${LARADOCK_PHP_VERSION}
 
 LABEL maintainer="Mahmoud Zalt <mahmoud@zalt.me>"
 
-ARG LARADOCK_PHP_VERSION
+ARG LARADOCK_
+PHP_VERSION
 
 # Set Environment Variables
 ENV DEBIAN_FRONTEND noninteractive
@@ -79,8 +80,6 @@ RUN set -xe; \
   libzip-dev zip unzip \
   # Install the zip extension
   php${LARADOCK_PHP_VERSION}-zip \
-  # Install the crul extension
-  php${LARADOCK_PHP_VERSION}-curl \
   # nasm
   nasm && \
   php -m | grep -q 'zip'
